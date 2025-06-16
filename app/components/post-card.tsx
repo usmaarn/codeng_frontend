@@ -25,7 +25,7 @@ export default function PostCard({ post }: { post: Post }) {
             </Link>
           </h3>
           <p className="text-xs text-zinc-500">
-            {post.createdAt.toDateString()}
+            {new Date(post.createdAt).toUTCString()}
           </p>
         </div>
 

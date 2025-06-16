@@ -2,49 +2,25 @@ import { useState } from "react";
 import type { Route } from "./+types/home";
 import AppLayout from "~/components/app-layout";
 import type { Post } from "~/lib/types";
-import { Card, CardContent, CardHeader } from "~/components/ui/card";
+import { Card, CardContent } from "~/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
-import { Link } from "react-router";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuTrigger,
-} from "~/components/ui/dropdown-menu";
-import { Button } from "~/components/ui/button";
-import { MenuIcon, MoreVerticalIcon } from "lucide-react";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "~/components/ui/dialog";
 import PostCard from "~/components/post-card";
 import AddPost from "~/components/add-post";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "ClassNG | Homepage" },
+    { title: "CodeNG | Homepage" },
     { name: "description", content: "Your online class platform" },
   ];
 }
 
-export default function Home() {
-  const [posts, setPosts] = useState<Post[]>([
-    {
-      id: 1,
-      content: "this is a test post",
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    },
-    {
-      id: 2,
-      content: "this is a test post again here",
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    },
-  ]);
+export async function loader({}: Route.LoaderArgs) {
+  // const response = await api.get<Post[]>("/posts");
+  return { posts: [] };
+}
+
+export default function Home({ loaderData }: Route.ComponentProps) {
+  const [posts, setPosts] = useState<Post[]>(loaderData.posts);
 
   return (
     <AppLayout>
