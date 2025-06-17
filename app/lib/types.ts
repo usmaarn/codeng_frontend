@@ -16,3 +16,10 @@ export interface Question {
   id: number;
   question: string;
 }
+
+export interface Topic {
+  id: number;
+  image: string;
+  name: string;
+  description: string;
+}

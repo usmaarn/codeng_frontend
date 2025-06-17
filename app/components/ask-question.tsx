@@ -1,10 +1,9 @@
 import { useForm } from "react-hook-form";
-import { Form, FormControl, FormField, FormItem, FormMessage } from "./ui/form";
+import { Form, FormControl, FormField, FormItem } from "./ui/form";
 import { Textarea } from "./ui/textarea";
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
+import { Card, CardContent } from "./ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { useState } from "react";
-import { cn } from "~/lib/utils";
 import { Button } from "./ui/button";
 import {
   Dialog,
@@ -14,9 +13,7 @@ import {
   DialogTrigger,
   DialogTitle,
 } from "./ui/dialog";
-import { toast } from "sonner";
-import { CheckCircle2, CheckCircleIcon, CheckIcon, XIcon } from "lucide-react";
-import { Toast } from "./ui/toaster";
+import toast from "react-hot-toast";
 
 export default function AskQuestion({
   onSubmit,
@@ -37,7 +34,7 @@ export default function AskQuestion({
     form.reset();
     onSubmit(values);
     setOpen(false);
-    toast.custom((id) => <Toast />);
+    toast.success("Hello world");
   }
 
   return (

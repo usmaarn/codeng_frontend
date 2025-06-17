@@ -1,10 +1,11 @@
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
 import AppLayout from "~/components/app-layout";
-import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
+import { Card, CardContent } from "~/components/ui/card";
 import type { Route } from "./+types/forum";
 import AskQuestion from "~/components/ask-question";
 import { useState } from "react";
 import type { Question } from "~/lib/types";
+import LeftSidebar from "~/components/ui/forum/left-sidebar";
 
 export function loader({}: Route.LoaderArgs) {
   return { questions: [] };
@@ -18,7 +19,7 @@ export default function Forum({
   return (
     <AppLayout>
       <div className="grid grid-cols-4 gap-5">
-        <div className=""></div>
+        <LeftSidebar />
         <div className="col-span-2">
           <AskQuestion
             onSubmit={(values) =>
